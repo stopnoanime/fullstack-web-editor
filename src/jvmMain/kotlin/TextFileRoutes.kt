@@ -7,23 +7,9 @@ import io.ktor.server.routing.*
 
 val textFileStorage = mutableListOf<TextFile>()
 
-fun Route.TextFileRouting() {
-    get("/listTextFiles") {
-        call.respond(textFileStorage.map { it.id })
-    }
-
-    get("/getTextFile/{id}") {
-        val id = call.parameters["id"]
-        val textFile = textFileStorage.find { it.id == id }
-
-        if(textFile == null) {
-            call.respondText(
-                "No textFile found with id $id",
-                status = HttpStatusCode.NotFound
-            )
-        } else {
-            call.respond(textFile)
-        }
+fun Route.textFileRouting() {
+    get("/getTextFiles") {
+        call.respond(textFileStorage)
     }
 
     put("/saveTextFile") {

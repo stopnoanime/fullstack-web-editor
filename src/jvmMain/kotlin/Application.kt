@@ -1,3 +1,4 @@
+import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -12,10 +13,12 @@ fun main() {
             json()
         }
         install(CORS) {
+            allowMethod(HttpMethod.Put)
+            allowHeader(HttpHeaders.ContentType)
             anyHost()
         }
         routing {
-            TextFileRouting()
+            textFileRouting()
         }
     }.start(wait = true)
 }
