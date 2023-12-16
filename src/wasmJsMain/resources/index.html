@@ -5,10 +5,15 @@
     <title>Kotlin WASM Monaco Web Editor</title>
 
     <style>
-        body {
+        body, .main-box {
             margin: 0;
             width: 100vw;
             height: 100vh;
+        }
+
+        .main-box {
+            display: flex;
+            flex-direction: column;
         }
 
         button {
@@ -49,7 +54,7 @@
         }
 
         #monaco {
-            height: 95%;
+            flex-grow: 1;
         }
 
         .top-bar{
@@ -77,14 +82,15 @@
         }
     </style>
 </head>
-    <body>
+<body>
+    <div class="main-box">
+        <div class="top-bar">
+            <button id="save-modal-open">Save file</button>
+            <button id="open-modal-open">Open file</button>
+        </div>
 
-    <div class="top-bar">
-        <button id="save-modal-open">Save file</button>
-        <button id="open-modal-open">Open file</button>
+        <div id="monaco"></div>
     </div>
-
-    <div id="monaco"></div>
 
     <div id="save-modal" class="modal">
         <div class="modal-content">
@@ -108,6 +114,5 @@
     </div>
 
     <script src="fullstack-web-editor.js"></script>
-
-    </body>
+</body>
 </html>

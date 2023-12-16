@@ -24,7 +24,6 @@ class UI(private val api: Api) {
     init {
         currentTextFile = TextFile("example.txt", "This is an example file.")
 
-
         setMonacoTheme("vs-dark")
         monaco = createMonacoEditor(elById("monaco"))
         monaco.setValue(currentTextFile.content)
