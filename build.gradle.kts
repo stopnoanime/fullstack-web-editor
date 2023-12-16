@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     kotlin("multiplatform") version "1.9.20"
-    //id("org.jetbrains.kotlin.plugin.serialization") version "1.9.21"
+    kotlin("plugin.serialization") version "1.9.21"
 }
 
 group = "org.example"
@@ -37,7 +37,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0-wasm2")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
             }
         }
 
