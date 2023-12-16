@@ -1,5 +1,6 @@
 import com.common.TextFile
 import kotlinx.browser.document
+import kotlinx.browser.window
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,6 +28,7 @@ class UI(private val api: Api) {
         setMonacoTheme("vs-dark")
         monaco = createMonacoEditor(elById("monaco"))
         monaco.setValue(currentTextFile.content)
+        window.addEventListener("resize") { monaco.layout() }
 
         saveModal = elById("save-modal")
         openModal = elById("open-modal")
@@ -57,7 +59,7 @@ class UI(private val api: Api) {
     }
 
     private suspend fun fileSaveModalSave() {
-        currentTextFile.content = monaco.getValue();
+        currentTextFile.content = monaco.getValue()
         currentTextFile.id = saveModalFileName.value
         api.saveTextFile(currentTextFile)
         fileSaveModalClose()

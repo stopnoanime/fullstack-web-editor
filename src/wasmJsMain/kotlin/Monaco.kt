@@ -6,10 +6,10 @@ import org.w3c.dom.Element
 external interface IStandaloneCodeEditor {
     fun getValue(): String
     fun setValue(value: String)
+    fun layout()
 }
 
 @JsName("setTheme")
-
 external fun setMonacoTheme(
     themeName: String,
 )
