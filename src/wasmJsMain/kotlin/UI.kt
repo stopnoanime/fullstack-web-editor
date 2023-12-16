@@ -57,6 +57,7 @@ class UI(private val api: Api) {
     }
 
     private suspend fun fileSaveModalSave() {
+        currentTextFile.content = monaco.getValue();
         currentTextFile.id = saveModalFileName.value
         api.saveTextFile(currentTextFile)
         fileSaveModalClose()
